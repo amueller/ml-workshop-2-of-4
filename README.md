@@ -10,7 +10,7 @@ Instructor
 ---
 
 This repository will contain the teaching material and other info associated
-with the "Introduction to Machine Learning" course.
+with the "Intermediate Machine Learning with scikit-learn" course.
 
 
 Obtaining the Tutorial Material
