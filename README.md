@@ -12,12 +12,32 @@ Instructor
 This repository will contain the teaching material and other info associated
 with the "Intermediate Machine Learning with scikit-learn" course.
 
+About the workshop
+------------------
+Scikit-learn is a machine learning library in Python, that has become a valuable tool for many data science practitioners. This training will go beyond the basics and show how to effectively evaluate and tune algorithms. We will also discuss the most important machine learning
+algorithms that you're likely to see in practice, how and when to use them, and some details about how they work internally.
+
+Prerequisites
+-------------
+This workshop assumes familiarity with Jupyter notebooks and basics of pandas, matplotlib and numpy.
+It also assumes familiarity with the basics of supervised learning, like training and test data and basics of model evaluation.
+You should have build a model with scikit-learn (or attend Introduction to Machine learning with scikit-learn) before
+taking this workshop.
+
+Content
+-------
+- Grid search and cross-validation
+- Linear models for classification
+- Linear models for regression
+- Decision trees
+- Random Forests
+- Gradient boosted trees
 
 Obtaining the Tutorial Material
 --------------------------------
 
 
-If you are familiar with git, it is probably most convenient if you clone the GitHub repository. This
+If you are familiar with git, it is most convenient if you clone the GitHub repository. This
 is highly encouraged as it allows you to easily synchronize any changes to the material.
 
 ```
