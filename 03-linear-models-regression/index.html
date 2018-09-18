@@ -568,68 +568,6 @@ res = pd.pivot_table(pd.DataFrame(grid.cv_results_),
 .center[
 ![:scale 60%](images/elasticnet_search.png)
 ]
----
-
-# Robust Regression
-![:scale 85%](images/robust_regression.png)
-???
-
----
-# Least Squares Fit to Outlier Data
-
-![:scale 80%](images/outliers_least_squares.png)
-
-???
-
----
-
-# Robust Fit
-
-![:scale 80%](images/outliers_robust_fit.png)
-
-???
-
----
-class: smaller
-# Huber loss
-.padding-top[
-.left-column[
-![:scale 100%](images/huber_loss.png)
-]
-.right-column[
-`$$min_{w, \sigma} \sum_{i=1}^n \left (\sigma + H\left ( \frac{X_iw - y_i}{\sigma}\right) \sigma \right ) + \alpha ||w||_2^2$$`
-
-`$$H(z) = \begin{cases} z^2, &if |z| < \epsilon, \\ 2\epsilon|z| & else\end{cases}$$`
-]
-]
-
-???
-
----
-
-# RANSAC
-
-
-![:scale 80%](images/ransac_algorithm.png)
-
-???
-
----
-class: middle
-![:scale 100%](images/ransac_algorithm2.png)
-
-???
-Here we can see the points that are determined inliers based on the fit.
-Clearly the blue one has the most inliers, so it is slected as solution.
----
-
-???
-
----
-
-class: middle
-
-# Questions ?
 
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
