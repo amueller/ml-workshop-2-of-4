@@ -153,24 +153,6 @@ of them in the next couple of weeks.
 So going back to nearest neighbors, what parameters correspond to high
 model complexity and what to low model complexity? high n_neighbors =
 low complexity!
----
-class: center
-# Nearest Centroid
-
-![:scale 35%](images/nearest_centroid_boundary.png)
-
-$$f(x) = \text{argmin}_{i \in Y} ||\bar{x}_i - x||$$
-
-???
-Before we go to more techniques to find the right hyper parameters,
-I want to introduce another simple model, nearest centroid.
-The nearest centroid model simply computes the centroid, or the mean of
-each class, and classifies each point by which centroid is the closest.
-You can write that down as a formula such as here, where x_i bar is the
-centroid, and I runs over the classes.
-You can see that this yields a linear decision boundary between the
-two classes.
----
 
 ---
 class: center, middle
