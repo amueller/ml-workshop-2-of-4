@@ -48,17 +48,7 @@ class: center
 # Training and Test Data
 
 ![:scale 80%](images/train-test-split.png)
----
-class: center, middle
 
-# Notebook: Data Loading 
-
----
-class: center
-
-# Supervised ML Workflow
-
-![:scale 80%](images/supervised-ml-workflow.png)
 ---
 class: center
 
@@ -82,38 +72,16 @@ y_pred = knn.predict(X_test)
 accuracy: 0.77
 
 ???
-We import train_test_split form model selection, which does a
-random split into 75%/25%.
-We provide it with the data X, which are our two features, and the
-labels y.
 
-As you might already know, all the models in scikit-learn are implemented
-in python classes, with a single object used to build and store the model.
+---
+class: center, middle
 
-We start by importing our model, the KneighborsClassifier, and instantiate
-it with n_neighbors=1. Instantiating the object is when we set any hyper parameter,
-such as here saying that we only want to look at the neirest neighbor.
+# Sckit-Learn API Summary
 
-Then we can call the fit method to build the model, here knn.fit(X_train,
-y_train)
-All models in scikit-learn have a fit-method, and all the supervised ones take
-the data X and the outcomes y. The fit method builds the model and stores any
-estimated quantities in the model object, here knn.  In the case of nearest
-neighbors, the `fit` methods simply remembers the whole training set.
+![:scale 80%](images/api-table.png)
 
-Then, we can use knn.score to make predictions on the test data, and
-compare them against the true labels y_test.
 
-For classification models, the score method will always compute
-accuracy. 
-
-Just for illustration purposes, I also call the predict method here.
-The predict method is what's used to make predictions on any dataset.
-If we use the score method, it calls predict internally and then
-compares the outcome to the ground truth that's provided.
-
-# Notebook: Supervised Learning
-
+???
 ---
 
     </textarea>
