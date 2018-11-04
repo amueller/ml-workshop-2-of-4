@@ -37,7 +37,7 @@ param_grid = {'C': np.logspace(-3, 3, 7)}
 param_grid
 
 from sklearn.model_selection import GridSearchCV
-grid = GridSearchCV(LogisticRegression(solver='saga'), param_grid, cv=5)
+grid = GridSearchCV(LogisticRegression(solver='lbfgs'), param_grid, cv=5)
 
 grid.fit(X_train, y_train)
 
