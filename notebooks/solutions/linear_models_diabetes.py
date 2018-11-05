@@ -19,9 +19,9 @@ X_train, X_test, y_train, y_test = train_test_split(diabetes.data,
                                                     diabetes.target)
 
 scores_lr = cross_val_score(LinearRegression(), X_train, y_train, cv=10)
-print("Linear regression score: {}".format(scores_lr.mean()))
+print("Linear regression score:", scores_lr.mean())
 scores_ridge = cross_val_score(Ridge(), X_train, y_train, cv=10)
-print("Ridge Regression score: {}".format(scores_ridge.mean()))
+print("Ridge Regression score:", scores_ridge.mean())
 
 # With scaled data
 from sklearn.preprocessing import StandardScaler
@@ -30,9 +30,9 @@ X_train_scaled = scaler.transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
 scores_lr = cross_val_score(LinearRegression(), X_train_scaled, y_train, cv=10)
-print("Linear regression w/ scaling: {}".format(scores_lr.mean()))
+print("Linear regression w/ scaling:", scores_lr.mean())
 scores_ridge = cross_val_score(Ridge(), X_train_scaled, y_train, cv=10)
-print("Ridge regression w/ scaling: {}".format(scores_ridge.mean()))
+print("Ridge regression w/ scaling:", scores_ridge.mean())
 
 from sklearn.model_selection import GridSearchCV
 param_grid = {'alpha': np.logspace(-3, 3, 7)}
@@ -80,9 +80,9 @@ X_train_poly = poly.fit_transform(X_train_scaled)
 X_test_poly = poly.transform(X_test_scaled)
 
 scores_lr = cross_val_score(LinearRegression(), X_train_poly, y_train, cv=10)
-print("Linear regression poly features: {}".format(scores_lr.mean()))
+print("Linear regression poly features:", scores_lr.mean())
 scores_ridge = cross_val_score(Ridge(), X_train_poly, y_train, cv=10)
-print("Ridge regression poly features: {}".format(scores_ridge.mean()))
+print("Ridge regression poly features:", scores_ridge.mean())
 
 from sklearn.model_selection import GridSearchCV
 param_grid = {'alpha': np.logspace(-3, 3, 7)}
