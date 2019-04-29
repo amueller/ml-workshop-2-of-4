@@ -37,7 +37,8 @@ param_grid = {'C': np.logspace(-3, 3, 7)}
 param_grid
 
 from sklearn.model_selection import GridSearchCV
-grid = GridSearchCV(LogisticRegression(solver='lbfgs'), param_grid, cv=5)
+grid = GridSearchCV(LogisticRegression(solver='lbfgs'), param_grid, cv=5,
+                    return_train_score=True)
 
 grid.fit(X_train, y_train)
 
@@ -47,7 +48,7 @@ grid.best_score_
 # some visualization
 
 import pandas as pd
-% matplotlib inline
+%matplotlib inline
 res = pd.DataFrame(grid.cv_results_)
 res.mean_test_score.plot()
 res.mean_train_score.plot()
