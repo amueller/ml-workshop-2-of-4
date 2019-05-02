@@ -232,7 +232,7 @@ X_train, X_test, y_train, y_test = train_test_split(cancer.data,cancer.target,
                                                     random_state=0)
 
 
-from sklearn.tree import DecisionTreeClassifier, export_graphviz
+from sklearn.tree import DecisionTreeClassifier
 tree = DecisionTreeClassifier(max_depth=2)
 tree.fit(X_train, y_train)
 
