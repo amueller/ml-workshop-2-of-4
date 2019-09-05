@@ -701,18 +701,6 @@ also maybe if there are some features that are really not
 useful, the L1 penalty helps makes the same exactly zero.
 
 ---
-class: center
-# Comparing unit balls
-
-![:scale 70%](images/l1l2_elasticnet.png)
-
-???
-
-Looking at the unit balls, if you zoom in here you would see
-the Elastic Net ball is kind of round, but also has a
-corner. Important things are the corners because that allows
-you to hit the exact zeros.
----
 # Parametrization in scikit-learn
 `$$\min_{w \in \mathbb{R}^p, b\in\mathbb{R}} \sum_{i=1}^n ||w^T\mathbf{x}_i + b - y_i||^2 + \alpha \eta ||w||_1 +  \alpha (1 - \eta) ||w||^2_2 $$`
 
