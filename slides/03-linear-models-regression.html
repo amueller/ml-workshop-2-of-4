@@ -303,44 +303,6 @@ better in general, though. Reducing anything to a single number
 is tricky.
 
 ---
-# Scaling
-```python
-from sklearn.linear_model import Ridge
-from sklearn.preprocessing import StandardScaler
-X, y = boston.data, boston.target
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, random_state=0)
-
-scaler = StandardScaler()
-scaler.fit(X_train)
-X_train_scaled = scaler.transform(X_train)
-ridge = Ridge().fit(X_train_scaled, y_train)
-
-X_test_scaled = scaler.transform(X_test)
-ridge.score(X_test_scaled, y_test)
-```
-???
-If you want to scale the data, you can use StandardScaler
-for that. It makes the mean zero and the standard deviation
-one. It's an unsupervised model, so it only takes the data
-X_train to fit. Fitting just means computing mean and
-standard devitation. Then, we can scale the data using the
-transform method. Make sure that you fit the data only on
-the training set, and then transform the training and the
-test set. If you want to use scaling inside
-cross-validation, it's a little bit more tricky. As I said,
-more details next wednesday. I'm just mentioning this here
-because it might come in handy for the homework.
-
-Ok but so let's come back to the Ridge model. Above we just
-used the default setting for the parameter alpha, which is
-one. This is a reasonable default, but there is no reason
-why this should give us the optimum generalization
-performance on this problem. So it's a good idea to adjust
-the parameter. As we saw on Monday, we can easily do that
-with gridsearchCV.
-
----
 
 .smallest[
 ```python
