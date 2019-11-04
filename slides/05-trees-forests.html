@@ -873,7 +873,7 @@ you to decrease RAM size and decrease prediction time.
 ```python
 X_train, X_test, y_train, y_test = train_test_split(
     iris.data, iris.target, stratify=iris.target, random_state=1)
-rf = RandomForestClassifier(n_estimators=100).fit(X_train, y_train)
+rf = RandomForestClassifier().fit(X_train, y_train)
 rf.feature_importances_
 plt.barh(range(4), rf.feature_importances_)
 plt.yticks(range(4), iris.feature_names);

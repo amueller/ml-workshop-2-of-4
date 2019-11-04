@@ -25,7 +25,7 @@ X_train_scaled = scaler.transform(X_train)
 from sklearn.model_selection import cross_val_score
 from sklearn.linear_model import LogisticRegression
 
-scores = cross_val_score(LogisticRegression(), X_train, y_train, cv=5)
+scores = cross_val_score(LogisticRegression(), X_train, y_train)
 print(scores.mean())
 
 
@@ -37,7 +37,7 @@ param_grid = {'C': np.logspace(-3, 3, 7)}
 param_grid
 
 from sklearn.model_selection import GridSearchCV
-grid = GridSearchCV(LogisticRegression(solver='lbfgs'), param_grid, cv=5,
+grid = GridSearchCV(LogisticRegression(solver='lbfgs'), param_grid,
                     return_train_score=True)
 
 grid.fit(X_train, y_train)

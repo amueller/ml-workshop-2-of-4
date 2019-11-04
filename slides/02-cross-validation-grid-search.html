@@ -651,7 +651,7 @@ like, or we can use Shuffle split.
 ```python
 from sklearn.model_selection import cross_validate
 res = cross_validate(KNeighborsClassifier(), X, y, return_train_score=True,
-                    cv=5, scoring=["accuracy", "roc_auc"])
+                     scoring=["accuracy", "roc_auc"])
 res_df = pd.DataFrame(res)
 ```
 
