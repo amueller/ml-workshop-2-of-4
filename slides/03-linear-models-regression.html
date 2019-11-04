@@ -272,35 +272,6 @@ regression and Ridge regression. Here is ridge regression
 uses a default value of alpha of 1. Here these two scores
 are quite similar.
 
----
-# Coefficient of determination R^2
-
-`$$ R^2(y, \hat{y}) = 1 - \frac{\sum_{i=0}^{n - 1} (y_i - \hat{y}_i)^2}{\sum_{i=0}^{n - 1} (y_i - \bar{y})^2} $$`
-
-`$$ \bar{y} =  \frac{1}{n} \sum_{i=0}^{n - 1} y_i$$`
-
-Can be negative for biased estimators - or the test set!
-
-???
-The scores are R squared or coefficient of determination.
-This is basically a score that's usually between zero and
-one, where one means perfect prediction or perfect
-correlation and zero means a random prediction. What it does
-is it computes the mean of the targets over the data you're
-evaluating it on and then it looks at the distance between
-the prediction and the ground truth relative to the mean. If
-it's negative, it means you do a worse job at predicting and
-just predicting the mean. It can happen if your model was
-really bad and bias. The other reason is if you use a test
-set. This is guaranteed to be positive on the data it was
-fit on with an unbiased linear model, which will nearly
-never apply to what we’re doing.
-
-The R^2 can be misleading if there's outliers in the training
-data and some consider it a bad metric. Max Kuhn, author of APM
-thinks it's a bad metric. It's not clear to me that MSE is much
-better in general, though. Reducing anything to a single number
-is tricky.
 
 ---
 
@@ -524,22 +495,6 @@ There are some very big coefficients that go to zero very
 quickly and some coefficients here that stay the same for a
 long time.
 
----
-# Learning Curves
-
-![:scale 90%](images/ridge_learning_curve.png)
-
-???
-The thing I want to illustrate is if you have less data,
-regularization helps more. You can see the effects here
-between the orange and the red are very drastic. The green
-one probably has too much regularization. If you have very
-little data, even regularizing way too much is okay, but
-there's sort of a sweet spot here which is the orange one
-and the orange one does best. The more data you add, the
-less important regularization becomes. If you take the blue
-curve at the beginning it’s much higher than the red curve,
-but then, in the end, they overlap.
 
 ---
 # Lasso Regression

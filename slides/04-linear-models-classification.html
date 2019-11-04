@@ -428,29 +428,6 @@ theoretically sound way.
 class: center
 
 # Reduction to Binary Classification
-.padding-top[
-.left-column[
-## One vs Rest
-]
-
-.right-column[
-## One vs One
-]
-]
-???
-The slightly hacky way is using what's known as a reduction.
-We're doing a reduction like in math: reducing one problem
-to another. In this case we're reducing the problem of
-multi-class classification into several instances of the
-binary classification problem. And we already know how to
-deal with binary classification.
-
-There are two straight-forward ways to reduce multi-class to
-binary classification. the first is called one vs rest, the
-second one is called one-vs-one.
-
----
-class: spacious
 
 # One Vs Rest
 
@@ -482,7 +459,7 @@ class: spacious
 
 "Class with highest score"
 
-$$\hat{y} = \text{arg}\max_{i \in Y} \textbf{w}_i\textbf{x} + b_i$$
+$$\hat{y} = \text{arg}\max_{i \in Y} \textbf{w}^T_i\textbf{x} + b_i$$
 
 
 ???
