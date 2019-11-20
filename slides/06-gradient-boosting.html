@@ -376,40 +376,9 @@ And that will make your computation much faster.
 - Scikit-learn compatible interface
 
 ---
-class: spacious
+# HistGradientBoostingClassifier
 
-.center[
-![:scale 50%](images/xgboost_sklearn_bench.png)
-]
-- Exact splits ~5x faster on single core
-- Appoximate splits, multi-core -> more speed!
-- Also check lightGBM
-- Both have GPU support
-- https://github.com/szilard/GBM-perf
-???
-Here is actually for the exact version of XGBoost the
-comparison in terms of time and accuracy. This is for
-illustrative purposes. I ran this on amnest or subsets of
-amnest. The x-axis is the number of samples and so you can
-see how the runtime increases as the number of samples
-increases.
-
-For a significant number of samples, you can see that
-XGBoost is much faster.
-
-If you run on a single core XGBoost tends to be about five
-times faster, if you run it on a 10 core machine, it's going
-to be much, much faster.
-
-There's also an implementation out of Microsoft called
-lightGBM, which might be even faster. So according to a lot
-of latest benchmarks that I saw, lightGBM is actually
-fastest. LightGBM and XGBoost both have GPU support, which
-makes them even faster. For GPU support, the benchmark that
-I saw stated XGBoost was a bit faster while on CPU lightGBM
-was a bit faster. But both are pretty fast and highly
-paralleled optimized algorithms. So if you care about
-speeds, you want to use one of these two.
+![:scale 100%](images/hist_gradient_boosting.png)
 ---
 # Early stopping
 
@@ -448,58 +417,6 @@ class:spacious
 - Typically strong pruning via max_depth
 - Regularization
 - Pick learning rate and do early stopping?
----
-class: middle
-# Concluding tree-based models
----
-class:spacious
-# When to use tree-based models
-- Model non-linear relationships
-- Doesn’t care about scaling, no need for feature engineering
-- Single tree: very interpretable (if small)
-- Random forests very robust, good benchmark
-- Gradient boosting often best performance with careful tuning
-???
-To summarize, tree-based models are really very, very
-popular family of models. They're very commonly used. You
-probably want to use them if you want nonlinear
-relationships, or if you have a lot of different kinds of
-weird features because they really don't care about scaling
-of the features, so it allows you to get rid of mostly
-preprocessing.
-
-If you want very interpretable model, single trees or small
-single trees are good ideas, because it's one of the few
-models that you can sort of write down on a blackboard and
-show to someone, and they'll have some idea of what's going
-on. That's impossible for any other models.
-
-Random forests are great because they're very robust. And
-you don't have to tune anything, you just run a random
-forest with 100 trees and with the default settings and it
-will work great.
-
-And so this one of my first benchmarks. Usually, I first ran
-a logistic regression then I run random forests.
-
-Gradient Boosting is often the best performing model, sort
-of the centered toolbox. Sometimes you need to tune a little
-bit more, so you need to tune the depth of the trees or the
-learning rate, and so on. But if you tune them, then they
-will usually beat random forest on those data sets.
-
-One case where you might not want to use trees is if you
-have very high dimensional sparse data then linear models
-might work better but also your mileage may vary. On the
-contrary, if you have like a low dimensional space,
-tree-based models are probably a good bet.
-
-Next thing we'll talk about is a different way to build
-ensembles, different way to put together multiple models.
----
-class: center, middle
-
-# Notebook: Gradient Boosting
 
 
     </textarea>
