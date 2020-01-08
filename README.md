@@ -20,8 +20,13 @@ with the "Intermediate Machine Learning with scikit-learn" course.
 
 About the workshop
 ------------------
-Scikit-learn is a machine learning library in Python, that has become a valuable tool for many data science practitioners. This training will go beyond the basics and show how to effectively evaluate and tune algorithms. We will also discuss the most important machine learning
-algorithms that you're likely to see in practice, how and when to use them, and some details about how they work internally.
+Scikit-learn is a machine learning library in Python, that has become a
+valuable tool for many data science practitioners. This workshop will go beyond
+the basics and show how to effectively evaluate and tune algorithms. We will
+also discuss the most important machine learning algorithms that you're likely
+to see in practice, how and when to use them, and some details about how they
+work internally. The session will focus on linear models for classification and
+regression and tree-based models, including random forests.
 
 Prerequisites
 -------------
