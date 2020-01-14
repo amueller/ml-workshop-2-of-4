@@ -224,6 +224,7 @@ test-set score: 0.951
 ```
 ]
 ???
+FIXME complex code
 Here is an implementation of the three-fold split for selecting the
 number of neighbors.
 For each number of neighbors that we want to try, we build a model on
@@ -502,7 +503,7 @@ present at all in a particular fold.
 ---
 # Defaults in scikit-learn
 
-- 3-fold is the deprecated default, 5-fold in 0.22
+- 5 folds (starting from in 0.22)
 - For classification cross-validation is stratified
 - train_test_split has stratify option:
 train_test_split(X, y, stratify=y)
@@ -525,10 +526,10 @@ with the default parameters, it will yield exactly the same results.
 class: spacious
 # Repeated KFold and LeaveOneOut
 
-- LeaveOneOut : KFold(n_folds=n_samples)
+- LeaveOneOut : KFold(n_folds=n_samples)<br />
 High variance, takes a long time
 
-- Better: RepeatedKFold.
+- Better: RepeatedKFold.<br />
 Apply KFold or StratifiedKFold multiple times with shuffled data. Reduces
 variance!
 
