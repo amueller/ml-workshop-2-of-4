@@ -462,14 +462,53 @@ trees are interpretable. So that's also the reason why you
 might want to restrict the rows of the tree. So you can
 easily communicate and easily explained.
 ---
-class:spacious
-# Relation to Nearest Neighbors
-- Predict average of neighbors – either by k, by epsilon ball or by leaf.
-- Trees are much faster to predict.
-- Both can’t extrapolate
-???
-FIXME plots
+# Cost Complexity Pruning
+.padding-top[
+.larger[
+$$  R_\alpha(T) = R(T) + \alpha|T| $$
+]
+]
 
+$R(T)$ is total leaf impurity
+
+$|T|$ is number of leaf nodes
+
+$\alpha$ is free parameter.
+---
+
+.smaller[
+```python
+from sklearn.model_selection import GridSearchCV
+param_grid = {'ccp_alpha': np.linspace(0., 0.03, 20)}
+grid = GridSearchCV(DecisionTreeClassifier(random_state=0),
+                    param_grid=param_grid, cv=10)
+grid.fit(X_train, y_train)
+```
+]
+.center[
+![:scale 70%](images/grid_ccp_alpha.png)
+]
+---
+# Efficient pruning
+```python
+clf = DecisionTreeClassifier(random_state=0)
+path = clf.cost_complexity_pruning_path(X_train, y_train)
+ccp_alphas, impurities = path.ccp_alphas, path.impurities
+```
+.center[
+![:scale 55%](images/pruning_alpha.png)
+]
+---
+# Best post-pruned vs pre-pruned
+.left-column[
+## Cost-complexity pruning
+![:scale 70%](images/tree_pruned.png)
+
+]
+.right-column[
+## Max leaf nodes search
+![:scale 80%](images/max_leaf_nodes_8.png)
+]
 ---
 #Extrapolation
 .center[
@@ -556,6 +595,14 @@ learning is hard. And if you need to extrapolate, there's a
 chance you're not going to be able to do with any model. But
 in particular, for tree-based and nearest neighbor based
 models, you should keep in mind that they can't do that.
+---
+class:spacious
+# Relation to Nearest Neighbors
+- Predict average of neighbors – either by k, by epsilon ball or by leaf.
+- Trees are much faster to predict.
+- Both can’t extrapolate
+???
+FIXME plots
 ---
 
 # Instability
@@ -705,9 +752,9 @@ the importance.
 - Can split on categorical data directly
 - Intuitive way to split: split in two subsets
 - 2 ^ n_values many possibilities
-- Possible to do in linear time exactly for gini index and binary classification.
+- Possible to do in O(n_values . log(n_values)) exactly for gini index and binary classification.
 - Heuristics done in practice for multi-class.
-- Not in sklearn :(
+- Not in sklearn yet
 
 ???
 You can use categorical data in trees, and you can do this
