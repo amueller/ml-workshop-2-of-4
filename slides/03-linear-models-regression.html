@@ -384,7 +384,8 @@ pd.Series(triazines.target).hist()
 
 ---
 ```python
-X_train, X_test, y_train, y_test = train_test_split(triazines.data, triazines.target, random_state=0)
+X_train, X_test, y_train, y_test = train_test_split(
+    triazines.data, triazines.target, random_state=0)
 
 cross_val_score(LinearRegression(), X_train, y_train, cv=5)
 ```
