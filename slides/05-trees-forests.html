@@ -68,6 +68,17 @@ class: centre,middle
 ![:scale 70%](images/tree_illustration.png)
 ]
 ???
+Binary classification trees are binary trees, where each
+node corresponds to a question asked about the data. This
+example is a fictional task where you want to distinguish
+hawks, penguins, dolphins, and bears. You ask a series of
+binary questions that will lead to which animal it might be.
+
+Depending on what the answer is for a particular question,
+you could ask another question. This way you can narrow it
+down for possible outcomes. Usually, when we are doing
+classification we have continuous features and so the
+questions are thresholds on single features.
 
 ---
 # Building Trees
@@ -283,13 +294,13 @@ cancer dataset, the top node corresponds to the whole
 dataset. The tree gets purer and purer as you move down the
 tree.
 ---
-class:spacious
+class:some-space
 
 # Parameter Tuning
 
-- Pre-pruning and post-pruning (not in sklearn yet)
+- Pre-pruning vs post-pruning
 
-- Limit tree size (pick one, maybe two):
+- Pre-pruning: Limit tree size (pick one, maybe two):
 
   - max_depth
 

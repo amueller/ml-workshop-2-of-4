@@ -155,9 +155,10 @@ model complexity and what to low model complexity? high n_neighbors =
 low complexity!
 
 ---
-class: center, middle
 
-![:scale 80%](images/train_test_set_2d_classification.png)
+# So far: Train-test-split
+
+![:scale 100%](images/train_test_split_new.png)
 
 ???
 So far we’ve work with a split of the data into a training and a test
@@ -171,9 +172,7 @@ What’s the problem with that?
 ---
 
 # Threefold split
-.padding-top[
-![:scale 100%](images/threefold_split.png)
-]
+![:scale 100%](images/train_test_validation_split.png)
 ???
 The simplest way to combat this overfitting to the test set is by using
 a three-fold split of the data, into a training, a validation and a
@@ -186,14 +185,27 @@ hypothesis testing error!
 
 What are downsides of this? We lose a lot of data for evaluation, and
 the results depend on the particular sampling.
---
-<br />
+---
+class: center
+# Overfitting the validation set
 
-pro: fast, simple
+![:scale 80%](images/overfitting_validation_set_1.png)
 
-con: high variance, bad use of data
+---
+class: center
+# Overfitting the validation set
 
+![:scale 80%](images/overfitting_validation_set_2.png)
+---
+class: center
+# Overfitting the validation set
 
+![:scale 80%](images/overfitting_validation_set_3.png)
+---
+class: center
+# Overfitting the validation set
+
+![:scale 80%](images/overfitting_validation_set_4.png)
 ---
 # Threefold Split for Hyper-Parameters
 
@@ -240,8 +252,9 @@ of the data, and our results depend on how exactly we split the datasets.
 So how can we make this more robust?
 ---
 # Cross-validation
-.padding-top[
-![:scale 100%](images/kfold_cv.png)]
+.center[
+![:scale 80%](images/cross_validation_new.png)
+]
 ???
 The answer is of course cross-validation. In cross-validation, you split
 your data into multiple folds, usually 5 or 10, and built multiple models.
@@ -258,12 +271,13 @@ Better data use (larger training sets).
 Does that solve all problems? No, it replaces only one of the splits,
 usually the inner one!
 --
-<br \>
+.smaller[
 
 pro: more stable, more data
 
 con: slower
 
+]
 ???
 
 ---
@@ -271,7 +285,7 @@ con: slower
 class: center, some-space
 # Cross-validation + test set
 
-![:scale 70%](images/grid_search_cross_validation.png)
+![:scale 105%](images/grid_search_cross_validation_new.png)
 
 ???
 Here is how the workflow looks like when we are using five-fold
@@ -477,13 +491,18 @@ but there are many other strategies.
 
 One of the most commonly ones is stratified k-fold cross-validation.
 ---
-# StratifiedKFold
-
-![:scale 100%](images/stratified_cv.png)
-
+.center[
+![:scale 90%](images/kfold_cv.png)
+]
+---
+class: compact
+.center[
+![:scale 90%](images/stratified_cv.png)
+]
+.smallest[
 Stratified:
 Ensure relative class frequencies in each fold reflect relative class
-frequencies on the whole dataset.
+frequencies on the whole dataset.]
 
 ???
 The idea behind stratified k-fold cross-validation is that you want the
@@ -501,37 +520,49 @@ This is also helpful if your data is very imbalanced. If some of the
 classes are very rare, it could otherwise happen that a class is not
 present at all in a particular fold.
 ---
-# Defaults in scikit-learn
+# Importance of Stratification
+.smaller[
+```python
+y.value_counts()
+```
+```
+0    60
+1    40
+```
+```python
+from sklearn.model_selection import cross_val_score, KFold, StratifiedKFold
+from sklearn.dummy import DummyClassifier
 
-- 5 folds (starting from in 0.22)
-- For classification cross-validation is stratified
-- train_test_split has stratify option:
-train_test_split(X, y, stratify=y)
-
-- No shuffle by default!
-
-???
-Before we go to the other strategies, I wanted to point out the default
-behavior in scikit-learn.
-By default, all cross-validation strategies are three-fold.
-If you do cross-validation for classification, it will be stratified
-by default.
-Because of how the interface is done, that’s not true for
-train_test_split and if you want a stratified train_test_split, which
-is always a good idea, you should use stratify=y
-Another thing that’s important to keep in mind is that by default
-scikit-learn doesn’t shuffle! So if you run cross-validation twice
-with the default parameters, it will yield exactly the same results.
+dc = DummyClassifier('most_frequent')
+skf = StratifiedKFold(n_splits=5, shuffle=True)
+res = cross_val_score(dc, X, y, cv=skf)
+np.mean(res), res.std()
+```
+```
+(0.6, 0.0)
+```
+```python
+kf = KFold(n_splits=5, shuffle=True)
+res = cross_val_score(dc, X, y, cv=kf)
+np.mean(res), res.std()
+```
+```
+(0.6, 0.063)
+```
+]
 ---
 class: spacious
 # Repeated KFold and LeaveOneOut
 
-- LeaveOneOut : KFold(n_folds=n_samples)<br />
-High variance, takes a long time
+- LeaveOneOut : KFold(n_folds=n_samples) <br \>
+High variance, takes a long time <br \>
+.tiny[(see [Raschka](https://arxiv.org/pdf/1811.12808.pdf) for a review and [Varoquaux](https://hal.inria.fr/hal-01545002/file/paper.pdf) for empirical evaluation)]
 
-- Better: RepeatedKFold.<br />
-Apply KFold or StratifiedKFold multiple times with shuffled data. Reduces
-variance!
+- Better: ShuffleSplit (aka Monte Carlo) <br \>
+Repeatedly sample a test set with replacement
+
+- Even Better: RepeatedKFold. <br \>
+Apply KFold or StratifiedKFold multiple times with shuffled data.
 
 ???
 If you want even better estimates of the generalization performance,
@@ -543,9 +574,11 @@ high variance.
 A better way to get a robust estimate is to run 5-fold or 10-fold
 cross-validation multiple times, while shuffling the dataset.
 ---
-# ShuffleSplit / StratifiedShuffleSplit
-.padding-top[
-![:scale 100%](images/shuffle_split_cv.png)]
+class: compact
+.center[
+![:scale 100%](images/shuffle_split_cv.png)
+]
+.smaller[Number of iterations and test set size independent]
 
 ???
 Another interesting variant is shuffle split and stratified shuffle
@@ -557,10 +590,60 @@ reasonably large test-sets.
 It’s also great if you have a very large training set and you want to
 subsample it to get quicker results.
 ---
-# GroupKFold
+class: compact
+.center[
+![:scale 100%](images/repeated_stratified_kfold.png)
+]
+.smaller[
+Potentially less variance than StratifiedShuffleSplit.<br />
+Five times five fold or at most ten times ten fold is sufficient.
+]
+???
+---
+class: spacious
+# Defaults in scikit-learn
 
-.padding-top[
-![:scale 100%](images/group_kfold.png)]
+- 5-fold in 0.22 (used to be 3 fold)
+- For classification cross-validation is stratified
+- train_test_split has stratify option:
+train_test_split(X, y, stratify=y)
+
+- No shuffle by default!
+
+???
+By default, all cross-validation strategies are five fold.
+If you do cross-validation for classification, it will be stratified
+by default.
+Because of how the interface is done, that’s not true for
+train_test_split and if you want a stratified train_test_split, which
+is always a good idea, you should use stratify=y
+Another thing that’s important to keep in mind is that by default
+scikit-learn doesn’t shuffle! So if you run cross-validation twice
+with the default parameters, it will yield exactly the same results.
+---
+class: center, middle
+# Cross-Validation with non-iid data
+
+???
+---
+# Grouped Data
+### Assume have data (medical, product, user...) from 5 cities
+- New York, San Francisco, Los Angeles, Chicago, Houston.
+
+We can assume data within a city is more correlated then between cities.
+
+### Usage Scenarios
+- Assume all future users will be in one of these cities: i.i.d.
+- Assume we want to generalize to predict for a new city: not i.i.d.
+
+???
+Shipped product in 4 cities. Might ship in another one?
+States: you have all the states, no new state will start to exist
+
+Similar thing for multiple measurements per patient.
+Or geospacial data.
+---
+![:scale 100%](images/group_kfold.png)
 
 ???
 A somewhat more complicated approach is group k-fold.
@@ -579,11 +662,52 @@ In this example, there are four groups, and we want three folds. The
 data is divided such that each group is contained in exactly one fold.
 There are several other cross-validation methods in scikit-learn that
 use these groups.
+---
+class: center
+# Correlations in time (and/or space)
+
+![:scale 70%](images/time_series1.png)
+
+???
+Not necessarily obvious that there is a time component!
+Data collection usually happens over time!
 
 ---
-# TimeSeriesSplit
-.padding-top[
-![:scale 100%](images/time_series_cv.png)]
+class: center
+# Correlations in time (and/or space)
+
+![:scale 70%](images/time_series2.png)
+
+???
+Not necessarily obvious that there is a time component!
+Data collection usually happens over time!
+
+---
+class: center
+# Correlations in time (and/or space)
+
+![:scale 70%](images/time_series3.png)
+
+???
+Not necessarily obvious that there is a time component!
+Data collection usually happens over time!
+
+---
+![:scale 100%](images/time_series_walk_forward_cv.png)
+???
+Another common case of data that’s not independent is time
+series. Usually todays stock price is correlated with yesterdays and
+tomorrows. If you randomly split time series, this makes predictions
+deceivingly simple. In applications, you usually have data up to some
+point, and then try to make predictions for the future, in other words,
+you’re trying to make a forecast.
+The TimeSeriesSplit in scikit-learn simulates that, by taking increasing
+chunks of data from the past and making predictions on the next
+chunk. This is quite different from the other was to do cross-validation,
+in that the training sets are all overlapping, but it’s more appropriate
+for time-series.
+---
+![:scale 100%](images/time_series_cv.png)
 
 ???
 Another common case of data that’s not independent is time
