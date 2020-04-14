@@ -8,6 +8,17 @@ Other parts:
 - [Part 3](https://github.com/amueller/ml-workshop-3-of-4)
 - [Part 4](https://github.com/amueller/ml-workshop-4-of-4)
 
+
+Content
+-------
+- [Reminder on supervised learning](https://amueller.github.io/ml-workshop-2-of-4/slides/01-reminder-supervised-learning.html)
+- [Grid search and cross-validation](https://amueller.github.io/ml-workshop-2-of-4/slides/02-cross-validation-grid-search.html)
+- [Linear models for classification](https://amueller.github.io/ml-workshop-2-of-4/slides/03-linear-models-regression.html)
+- [Linear models for regression](https://amueller.github.io/ml-workshop-2-of-4/slides/04-linear-models-classification.html)
+- [Decision trees](https://amueller.github.io/ml-workshop-2-of-4/slides/05-trees-forests.html)
+- [Random Forests](https://amueller.github.io/ml-workshop-2-of-4/slides/05-trees-forests.html#26)
+
+
 Instructor
 -----------
 
@@ -34,15 +45,6 @@ This workshop assumes familiarity with Jupyter notebooks and basics of pandas, m
 It also assumes familiarity with the basics of supervised learning, like training and test data and basics of model evaluation.
 You should have build a model with scikit-learn (or attend Introduction to Machine learning with scikit-learn) before
 taking this workshop.
-
-Content
--------
-- [Reminder on supervised learning](https://amueller.github.io/ml-workshop-2-of-4/slides/01-reminder-supervised-learning.html)
-- [Grid search and cross-validation](https://amueller.github.io/ml-workshop-2-of-4/slides/02-cross-validation-grid-search.html)
-- [Linear models for classification](https://amueller.github.io/ml-workshop-2-of-4/slides/03-linear-models-regression.html)
-- [Linear models for regression](https://amueller.github.io/ml-workshop-2-of-4/slides/04-linear-models-classification.html)
-- [Decision trees](https://amueller.github.io/ml-workshop-2-of-4/slides/05-trees-forests.html)
-- [Random Forests](https://amueller.github.io/ml-workshop-2-of-4/slides/05-trees-forests.html#26)
 
 Obtaining the Tutorial Material
 --------------------------------
