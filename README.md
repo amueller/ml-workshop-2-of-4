@@ -13,8 +13,8 @@ Content
 -------
 - [Reminder on supervised learning](https://amueller.github.io/ml-workshop-2-of-4/slides/01-reminder-supervised-learning.html)
 - [Grid search and cross-validation](https://amueller.github.io/ml-workshop-2-of-4/slides/02-cross-validation-grid-search.html)
-- [Linear models for classification](https://amueller.github.io/ml-workshop-2-of-4/slides/03-linear-models-regression.html)
-- [Linear models for regression](https://amueller.github.io/ml-workshop-2-of-4/slides/04-linear-models-classification.html)
+- [Linear models for regression](https://amueller.github.io/ml-workshop-2-of-4/slides/03-linear-models-regression.html)
+- [Linear models for classification](https://amueller.github.io/ml-workshop-2-of-4/slides/04-linear-models-classification.html)
 - [Decision trees](https://amueller.github.io/ml-workshop-2-of-4/slides/05-trees-forests.html)
 - [Random Forests](https://amueller.github.io/ml-workshop-2-of-4/slides/05-trees-forests.html#26)
 
