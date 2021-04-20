@@ -4,7 +4,7 @@ Intermediate Machine learning with scikit-learn
 Part 2 of 4
 -----------
 Other parts:
-- [Part 1](https://github.com/amueller/ml-workshop-2-of-4)
+- [Part 1](https://github.com/amueller/ml-workshop-1-of-4)
 - [Part 3](https://github.com/amueller/ml-workshop-3-of-4)
 - [Part 4](https://github.com/amueller/ml-workshop-4-of-4)
 
